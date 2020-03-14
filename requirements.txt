@@ -1,8 +1,3 @@
 twisted
 python-Levenshtein
-pycube2crypto
-txCascil
 -e git+git://github.com/fdChasm/pyenet#egg=pyenet-0.1.0
--e git+git://github.com/fdChasm/pycube2common#egg=pycube2common-0.1.0
--e git+git://github.com/fdChasm/pycube2protocol#egg=pycube2protocol-0.1.0
--e git+git://github.com/fdChasm/pycube2demo#egg=pycube2demo-0.1.0
