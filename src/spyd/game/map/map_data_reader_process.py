@@ -21,5 +21,5 @@ if sys.argv[1] == '-d':
 elif sys.argv[1] == '-l':
     map_glob_expression = sys.argv[2]
     map_filenames = glob.glob(map_glob_expression)
-    result = map(map_filename_to_map_name, map_filenames)
+    result = list(map(map_filename_to_map_name, map_filenames))
     sys.stdout.write(json.dumps(result))

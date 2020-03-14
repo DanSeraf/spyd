@@ -200,7 +200,7 @@ class Room(object):
         return self._players.is_name_duplicate(name)
 
     def contains_client_with_ip(self, client_ip):
-        return self._client_ips.has_key(client_ip)
+        return client_ip in self._client_ips
 
     ###########################################################################
     #######################         Setters         ###########################
@@ -304,7 +304,7 @@ class Room(object):
             deferred = defer.maybeDeferred(event_handler.handle, self, client, *args, **kwargs)
             deferred.addErrback(client.handle_exception)
         else:
-            print "Unhandled client event: {} with args: {}, {}".format(event_name, args, kwargs)
+            print("Unhandled client event: {} with args: {}, {}".format(event_name, args, kwargs))
 
     ###########################################################################
     #######################  Player event handling  ###########################
@@ -316,7 +316,7 @@ class Room(object):
             deferred = defer.maybeDeferred(event_handler.handle, self, player, *args, **kwargs)
             deferred.addErrback(player.client.handle_exception)
         else:
-            print "Unhandled player event: {} with args: {}, {}".format(event_name, args, kwargs)
+            print("Unhandled player event: {} with args: {}, {}".format(event_name, args, kwargs))
 
     ###########################################################################
     #####################  Game clock event handling  #########################
@@ -435,7 +435,7 @@ class Room(object):
             self.gamemode.on_player_spectate(player)
 
         else:
-            print "invalid change"
+            print("invalid change")
 
     set_self_privilege_functionality_tree = {
         'temporary': {

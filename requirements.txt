@@ -1,7 +1,5 @@
 twisted
 python-Levenshtein
-simplejson
-simple_json
 pycube2crypto
 txCascil
 -e git+git://github.com/fdChasm/pyenet#egg=pyenet-0.1.0
