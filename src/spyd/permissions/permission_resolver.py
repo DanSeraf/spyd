@@ -11,8 +11,8 @@ class MissingInheritedGroup(Exception): pass
 
 def create_simple_pattern(pattern_string):
     "Takes a group or functionality pattern string and converts it into a RegexObject."
-    pattern_string = string.replace(pattern_string, '.', '\.')
-    pattern_string = string.replace(pattern_string, '*', '.*')
+    pattern_string = pattern_string.replace('.', '\.')
+    pattern_string = pattern_string.replace('*', '.*')
     pattern_string = "^{}$".format(pattern_string)
     return re.compile(pattern_string)
 
