@@ -1,3 +1,4 @@
 twisted
 python-Levenshtein
+pyrfc3339
 -e git+git://github.com/fdChasm/pyenet#egg=pyenet-0.1.0
