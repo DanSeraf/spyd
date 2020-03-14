@@ -1,13 +1,13 @@
 import struct
 
 class ReadCubeDataStream(object):
-    def __init__(self, data="", pos=0):
+    def __init__(self, data=b"", pos=0):
         try:
             if isinstance(data, ReadCubeDataStream):
                 self.data = bytearray(data.data)
             elif isinstance(data, bytearray):
                 self.data = data
-            elif type(data) == str:
+            elif type(data) == bytes:
                 self.data = bytearray(data)
             else:
                 print("I don't know what I got so just trying to map to a bytearray using ord. This shouldn't happen, it is slow.")
@@ -25,8 +25,8 @@ class ReadCubeDataStream(object):
     def empty(self):
         return self.pos >= self.length
         
-    def __str__(self):
-        return str(self.data[self.pos:])
+    def __bytes__(self):
+        return bytes(self.data[self.pos:])
     
     def __len__(self):
         return self.length - self.pos
@@ -54,13 +54,13 @@ class ReadCubeDataStream(object):
         
         if c == 0x80:
             t = self.read(3 if peek else 2, peek)
-            if peek: t = str(t[1:])
-            else: t = str(t)
+            if peek: t = bytes(t[1:])
+            else: t = bytes(t)
             return struct.unpack('h', t)[0]
         elif c == 0x81:
             t = self.read(5 if peek else 4, peek)
-            if peek: t = str(t[1:])
-            else: t = str(t)
+            if peek: t = bytes(t[1:])
+            else: t = bytes(t)
             return struct.unpack('i', t)[0]
         else:
             if(c & 0x80):

@@ -47,8 +47,8 @@ class CubeDataStream(object):
     def empty(self):
         return len(self.data) == 0
 
-    def __str__(self):
-        return str(self.data)
+    def __bytes__(self):
+        return bytes(self.data)
 
     def __len__(self):
         return len(self.data)
