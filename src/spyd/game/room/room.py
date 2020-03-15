@@ -267,8 +267,8 @@ class Room(object):
         self._game_clock.timeleft = 0
 
     def change_map_mode(self, map_name, mode_name):
-        # if not self.is_intermission:
-        #     self._finalize_demo_recording()
+        if not self.is_intermission:
+            self._finalize_demo_recording()
         self._game_clock.cancel()
         return self._map_mode_state.change_map_mode(map_name, mode_name)
 

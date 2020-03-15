@@ -24,5 +24,5 @@ class DemoRecorder(object):
 
     def write(self, demo_filename):
         with gzip.open(demo_filename, 'wb') as f:
-            f.write(struct.pack("16sii", DEMO_MAGIC, DEMO_VERSION, PROTOCOL_VERSION))
-            f.write(str(self._data))
+            f.write(struct.pack(b"16sii", DEMO_MAGIC.encode('utf-8'), DEMO_VERSION, PROTOCOL_VERSION))
+            f.write(bytes(self._data))
