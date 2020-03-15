@@ -23,4 +23,5 @@ elif sys.argv[1] == '-l':
     map_glob_expression = sys.argv[2]
     map_filenames = glob.glob(map_glob_expression)
     result = list(map(map_filename_to_map_name, map_filenames))
-    sys.stdout.write(pickle.dumps(result))
+    fp = os.fdopen(sys.stdout.fileno(), 'wb')
+    fp.write(pickle.dumps(result))
