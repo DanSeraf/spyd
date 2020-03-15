@@ -478,7 +478,7 @@ class Room(object):
             self.admins.add(target)
         self._update_current_masters()
 
-    def _set_self_privilege(self, client, requested_privilege):
+    def _set_self_privilege(self, client, requested_privilege, pass_hash):
         room_classification = "temporary" if self.temporary else "permanent"
 
         if requested_privilege > privileges.PRIV_NONE:
@@ -488,24 +488,30 @@ class Room(object):
             privilege_action = "relinquish"
             permission_involved = client.privilege
 
-        functionality_category = Room.set_self_privilege_functionality_tree.get(room_classification, {}).get(privilege_action, {})
+        # functionality_category = Room.set_self_privilege_functionality_tree.get(room_classification, {}).get(privilege_action, {})
 
-        functionality = functionality_category.get(permission_involved, None)
+        # functionality = functionality_category.get(permission_involved, None)
 
-        if functionality is None:
-            raise InsufficientPermissions("You do not have permissions to do that.")
+        # if functionality is None:
+        #     raise InsufficientPermissions("You do not have permissions to do that.")
 
-        if client.allowed(functionality):
-            self._client_change_privilege(client, client, requested_privilege)
-        else:
-            raise InsufficientPermissions(functionality.denied_message)
+        # # if client.allowed(functionality):
+        #     self._client_change_privilege(client, client, requested_privilege)
+        # else:
+        #     raise InsufficientPermissions(functionality.denied_message)
+
+        # if True:
+        self._client_change_privilege(client, client, requested_privilege)
+        # else:
+        #     raise InsufficientPermissions(functionality.denied_message)
+
 
     def _set_others_privilege(self, client, target, requested_privilege):
         raise GenericError("Setting other player privileges isn't currently implemented.")
 
-    def _client_try_set_privilege(self, client, target, requested_privilege):
+    def _client_try_set_privilege(self, client, target, requested_privilege, pass_hash):
         if client is target:
-            return self._set_self_privilege(client, requested_privilege)
+            return self._set_self_privilege(client, requested_privilege, pass_hash)
         else:
             return self._set_others_privilege(client, target, requested_privilege)
 

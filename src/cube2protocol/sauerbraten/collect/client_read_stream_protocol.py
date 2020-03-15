@@ -14,7 +14,7 @@ type_method_mapping = {
 sauerbraten_stream_spec = StreamSpecification(ReadCubeDataStream, type_method_mapping, {}, "int", message_types)
 
 mt = MessageType("N_SERVINFO",
-        Field(name="clientnum", type="int"), 
+        Field(name="clientnum", type="int"),
         Field(name="protocol_version", type="int"),
         Field(name="sessionid", type="int"),
         Field(name="haspwd", type="int"),
