@@ -17,6 +17,7 @@ class DemoRecorder(object):
 
     def record(self, millis, channel, data):
         # millis(int), channel(int), length(int), data(length#bytes)
+        data = data.encode('utf-8')
         length = len(data)
         self._data.extend(struct.pack('iii', millis, channel, length))
         self._data.extend(data)
