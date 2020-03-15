@@ -3,6 +3,7 @@ import struct
 class ReadCubeDataStream(object):
     def __init__(self, data=b"", pos=0):
         try:
+            assert len(data) == len(bytearray(data))
             if isinstance(data, ReadCubeDataStream):
                 self.data = bytearray(data.data)
             elif isinstance(data, bytearray):
@@ -86,7 +87,7 @@ class ReadCubeDataStream(object):
         try:
             for i in range(self.pos, self.length):
                 if self.data[i] == 0:
-                    return str(self.read(i-self.pos, peek))
+                    return bytes(self.read(i-self.pos, peek)).decode('utf-8')
         except:
             print((repr(self.data)))
             raise

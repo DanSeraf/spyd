@@ -2,7 +2,6 @@ from cube2common.constants import message_types, cs_id_types
 from cube2protocol.read_cube_data_stream import ReadCubeDataStream
 from cube2protocol.stream_specification import StreamSpecification, MessageType, Field, StreamStateModifierType, IteratedFieldCollection, FieldCollection, TerminatedFieldCollection, RawField, SwitchField, CaseField
 
-
 type_method_mapping = {
                             'stream_data': ReadCubeDataStream.read,
                             'int': ReadCubeDataStream.getint,
